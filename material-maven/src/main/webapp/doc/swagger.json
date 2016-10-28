@@ -1,0 +1,153 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample.",
+    "version" : "v1",
+    "title" : "Swagger Maven Plugin Sample"
+  },
+  "host" : "localhost:8080/material",
+  "basePath" : "/privateRest",
+  "tags" : [ {
+    "name" : "category"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/category" : {
+      "get" : {
+        "tags" : [ "category" ],
+        "summary" : "Retorna a listagem das categorias.",
+        "description" : "",
+        "operationId" : "list",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Category"
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "sampleoauth" : [ ]
+        } ]
+      },
+      "post" : {
+        "tags" : [ "category" ],
+        "summary" : "Cadastra a categoria.",
+        "description" : "",
+        "operationId" : "add",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Category"
+            }
+          }
+        },
+        "security" : [ {
+          "sampleoauth" : [ ]
+        } ]
+      },
+      "put" : {
+        "tags" : [ "category" ],
+        "summary" : "Realiza a edição da categoria.",
+        "description" : "",
+        "operationId" : "edit",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "security" : [ {
+          "sampleoauth" : [ ]
+        } ]
+      }
+    },
+    "/category/{id}" : {
+      "get" : {
+        "tags" : [ "category" ],
+        "summary" : "Retorna o objeto completo com as informações da categoria.",
+        "description" : "",
+        "operationId" : "getObject",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Category"
+            }
+          }
+        },
+        "security" : [ {
+          "sampleoauth" : [ ]
+        } ]
+      },
+      "delete" : {
+        "tags" : [ "category" ],
+        "summary" : "Realiza a remoção da categoria.",
+        "description" : "",
+        "operationId" : "remove",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        },
+        "security" : [ {
+          "sampleoauth" : [ ]
+        } ]
+      }
+    }
+  },
+  "definitions" : {
+    "Category" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

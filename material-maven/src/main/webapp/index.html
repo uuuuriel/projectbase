@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="material">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="pragma" content="no-cache">
+		
+		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+		
+		<script type="text/javascript" src="script.js"></script>
+		
+		<title>Teste API</title>
+	</head>
+	<body ng-controller="testeCtrl">
+		<form ng-submit="add()">
+			Categoria: <input type="text" ng-model="category.name"/>
+			<button type="submit">Enviar</button>
+		</form>
+		<br>
+		<input type="text" placeholder="pesquisar" ng-model="pesquisa.name"/>
+		<br>
+		<br>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Categoria</th>
+					<th>Ação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="list in listCategory | filter: pesquisa">
+					<td>{{list.name}}</td>
+					<td>
+						<a style="cursor: pointer; color: blue;" ng-click="edit(list);">Editar</a> &nbsp;
+						<a style="cursor: pointer; color: blue;" ng-click="remove(list.id);">Remover</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<form ng-submit="addStock(stock);">
+			Estoque: <input type="text" ng-model="stock.titulo"/>
+			<button type="submit">Enviar</button>
+		</form>
+	</body>
+</html>
